@@ -1,0 +1,2 @@
+- exécuter les scripts SQL présents dans immobilier.sql
+- résoudre les requêtes SQL présentes dans le fichier questions.txt 
