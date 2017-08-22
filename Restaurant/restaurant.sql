@@ -79,6 +79,9 @@
     INSERT INTO Compose VALUES (null, 2, 1);
     INSERT INTO Compose VALUES (null, 2, 3);
     
+	INSERT INTO Plat VALUES (null, "Pâtes nature", "", 3);
+	
+    
 /* Créer qielques commande */
 	INSERT INTO Commande VALUES (null, "première commande", "2017-08-22 11:07:50", 0);
     INSERT INTO Contient VALUES (null, 1, 1);
@@ -92,3 +95,25 @@
     -- select * from Plat
 	-- select * from Commande
 	-- select * from Contient
+    
+
+/* Afficher les ingrédients d'un plat 
+	SELECT Ingredients.designation
+	FROM Compose
+	RIGHT JOIN Ingredients 
+	ON Ingredients.id_j = Compose.Ingredients_id_j AND Compose.Plat_id_p=2;
+*/
+/* Afficher les ingrédients de chaque plats 
+	SELECT Plat.nom, Ingredients.designation
+	FROM Plat, Compose, Ingredients 
+	where Ingredients.id_j = Compose.Ingredients_id_j AND Compose.Plat_id_p=Plat.id_p;
+    */
+
+/* Inclure les plats sans ingrédients */
+	SELECT Plat.nom as 'Nom du plat', Ingredients.designation as 'Nom ingredient'
+    FROM Compose 
+		right join Plat on Plat.id_p=Compose.Plat_id_p
+		left join Ingredients on Ingredients.id_j=Compose.Ingredients_id_j;
+    
+
+    
