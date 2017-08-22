@@ -107,13 +107,18 @@
 	SELECT Plat.nom, Ingredients.designation
 	FROM Plat, Compose, Ingredients 
 	where Ingredients.id_j = Compose.Ingredients_id_j AND Compose.Plat_id_p=Plat.id_p;
-    */
+*/
 
-/* Inclure les plats sans ingrédients */
+/* Inclure les plats sans ingrédients 
 	SELECT Plat.nom as 'Nom du plat', Ingredients.designation as 'Nom ingredient'
     FROM Compose 
 		right join Plat on Plat.id_p=Compose.Plat_id_p
 		left join Ingredients on Ingredients.id_j=Compose.Ingredients_id_j;
-    
+*/
 
+/* afficher toutes les commandes avec leurs contenu (plats) */
+	SELECT Commande.nom as 'Nom commande', Plat.nom as 'Nom plat'
+    FROM Contient 
+		right join Commande on Commande.id_c=Contient.Commande_id_c 
+		left join Plat on Plat.id_p=Contient.Plat_id_p 
     
